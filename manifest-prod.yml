@@ -23,7 +23,7 @@ oauth_config:
       - chat:write.public
       - chat:write
       - users:read
-      - channel:read
+      - channels:read
       - groups:read
       - im:read
 settings:
