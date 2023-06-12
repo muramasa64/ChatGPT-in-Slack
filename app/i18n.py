@@ -34,7 +34,7 @@ _translation_result_cache = {}
 
 def translate(*, openai_api_key: str, context: BoltContext, text: str) -> str:
     lang = from_locale_to_lang(context.get("locale"))
-    if lang is None or lang == "English":
+    if lang is None or lang == "Japanese":
         return text
 
     cached_result = _translation_result_cache.get(f"{lang}:{text}")
