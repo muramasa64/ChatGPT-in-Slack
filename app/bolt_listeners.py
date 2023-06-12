@@ -67,6 +67,15 @@ def respond_to_app_mention(
 
     openai_api_key = context.get("OPENAI_API_KEY")
     try:
+        channel_id = context.channel_id
+        response = context.client.conversations_info(channel=channel_id, include_num_members=0)
+        if response.get("channel")["is_shared"]:
+            client.chat_postMessage(
+                channel=context.channel_id,
+                text="Can't run in channel connected with slack connect"
+            )
+            return
+
         if openai_api_key is None:
             client.chat_postMessage(
                 channel=context.channel_id,
